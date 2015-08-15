@@ -8,7 +8,7 @@ $susy: (
   container-position:center,
   columns: 12,
   gutters: 1/4,
-  gutter-position:split,
+  gutter-position:before,
   debug: (
 		image: show,
 		color: red,
@@ -21,20 +21,24 @@ $susy: (
 .container{
 	@include container;
 	background:red;
-		nav:nth-child(1){
-			@include span( 2 of (1 2 3 4) at 2);
-			background:green;
-		}	
-		nav:nth-child(2){
-			@include span( 2 of (1 2 3 4));
-			background:green;
+		nav{
+			@include span(6 of 12);
+			background:#00F;
+			&:nth-child(1){
+				@include first;
+			}
 		}
-
-
-
 
 }
 
 
 
 
+$grid: (1 2 3 2 1);
+
+	.outer {
+	  @include span(3 of $grid at 2);
+		background:#000;
+	  $context: nested(3 of $grid at 2);
+	  .inner { @include span(2 of $context at 1); background:red;}
+	}

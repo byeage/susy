@@ -203,7 +203,7 @@ function/mixin
     }
 	// 从第一列开始的两列 即2 3=5 5/7的宽度
 
-
+- - -
 		嵌套函数可以帮助我们更简单的处理上下文环境，而不需要自己计算
 
     $grid: (1 2 3 2 1);
@@ -215,8 +215,99 @@ function/mixin
       .inner { @include span(2 of $context at 1); }
     }
 
+###Global Box Sizing
+为全局样式设置盒模型
+
+    mixin
+        Format:	global-box-sizing($box [, $inherit])
+        Shortcut:	border-box-sizing([$inherit])
+        $box:	content-box | border-box
+        $inherit:	[optional] true | false
+
+设置可选参数$inherit 为true,默认继承全局盒模型样式，但是可以用元素自己的box-sizng轻易覆写。一旦为对象设置了盒模型，所有嵌套的元素都会被继承，除非inherit设置为false
+
+你可以传递一个box-sizing 参数 为一个元素设置盒模型
+
+    // input
+    .item { @include span(25em border-box); }
+
+    // sample output (depending on settings)
+    .item {
+      float: left;
+      width: 25em;
+      box-sizing: border-box;
+    }
 
 
+ 我们强烈推荐使用border-box盒模型，尤其是在当你使用内部沟槽时
+
+    // the basics with default behavior:
+    * { box-sizing: border-box; }
+
+    // the basics with $inherit set to true:
+    html { box-sizing: border-box; }
+    * { box-sizing: inherit; }
+  
+susy 需要设置盒模型，所以最好的方式是以简写方式设置全局盒模型
+    // the flexible version:
+    @include global-box-sizing(border-box);
+
+    // the shortcut:
+    @include border-box-sizing;
+
+
+#Rows & Edges 行和边界
+
+    mixin
+        Format:	break()
+        Reset:	nobreak()
+        Keywords:	break | nobreak
+
+		创建新行，需要清除之前的浮动
+
+    .new-line { @include break; }
+
+	当你要重置清除浮动，设置clear:none;时，使用关键字nobreak关键字
+    .no-new-line { @include nobreak; }
+
+    Both break and nobreak can also be used as keywords with the span mixin.
+
+###First
+
+    mixin
+        Format:	first($context)
+        Alternate:	alpha($context)
+        $context:	<layout>
+
+    Note 仅当在gutter-position 设置为before时有效 ，移除每行第一个元素的沟槽
+
+
+    .first { @include first; }
+
+###last 同上
+
+
+###full  占据整行
+	.last { @include full; }
+    
+#margins
+
+###pre
+###post
+###pull
+###squish
+###padding
+###prefix
+###suffix
+###pad
+###bleed
+###bleed-x
+###bleed-y
+###isolate
+###Gallery
+###show Grid
+### susy BreakPoint
+### Susy Media
 
 
 
