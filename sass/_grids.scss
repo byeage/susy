@@ -1,0 +1,40 @@
+// Requirements
+// ============
+
+@import "susy";
+
+$susy: (
+  container:80%,
+  container-position:center,
+  columns: 12,
+  gutters: 1/4,
+  gutter-position:split,
+  debug: (
+		image: show,
+		color: red,
+		output: overlay,
+		toggle: top bottom,
+  ),
+);
+
+
+.container{
+	@include container;
+	background:red;
+		nav:nth-child(1){
+			@include span( 2 of (1 2 3 4) at 2);
+			background:green;
+		}	
+		nav:nth-child(2){
+			@include span( 2 of (1 2 3 4));
+			background:green;
+		}
+
+
+
+
+}
+
+
+
+
