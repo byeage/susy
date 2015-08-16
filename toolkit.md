@@ -292,21 +292,141 @@ susy 需要设置盒模型，所以最好的方式是以简写方式设置全局
     
 #margins
 
-###pre
-###post
-###pull
-###squish
-###padding
-###prefix
-###suffix
-###pad
-###bleed
-###bleed-x
-###bleed-y
-###isolate
-###Gallery
-###show Grid
-### susy BreakPoint
+###pre 根据浮动方向在元素前面添加一个margin
+###post 根据浮动方向在元素之后添加一个margin
+###pull 根据浮动方向在元素之前添加一个负margin
+###squish  同时为元素添加前后margin
+
+盒模型影响元素width和padding的关系，浏览器默认盒模型box-content,宽度由padding和width共同决定，推荐的border-box盒模型，padding为width的一部分，宽度由width决定
+#padding
+
+###prefix 根据元素浮动情况，在元素之前添加一个padding
+###suffix 根据元素浮动情况，在元素之后添加一个padding
+###pad 同时为元素添加前后padding
+###bleed 出血 ，添加一个负margin和正的padding，元素内容超出了容器范围 ，但不影响内容布局
+	.example1 { @include bleed(1em); }
+    .example2 { @include bleed(1em 2 20px 5% of 8 .25); }
+
+    // output
+    .example1 {
+      margin: -1em;
+      padding: 1em;
+    }
+
+    .example2 {
+      margin-top: -1em;
+      padding-top: 1em;
+      margin-right: -22.5%;
+      padding-right: 22.5%;
+      margin-bottom: -20px;
+      padding-bottom: 20px;
+      margin-left: -5%;
+      padding-left: 5%;
+    }
+
+###bleed-x  前后出血
+###bleed-y 上下出血
+###isolate 基于浮动的布局技术，参数和span相同，但是任何长度值和栅格序列都会被解释为孤立定位
+    // input
+    .function {
+      margin-left: isolate(2 of 7 .5 after);
+    }
+
+    // output
+    .function {
+      margin-left: 15%;
+    }
+
+    And the mixin returns all the properties required for isolation.
+
+    // input
+    .mixin { @include isolate(25%); }
+
+    // output
+    .mixin {
+      float: left;
+      margin-left: 25%;
+      margin-right: -100%;
+    }
+
+
+###Gallery 画廊样式，使用子元素选择器和孤立布局技术对元素进行布局
+
+    // each img will span 3 of 12 columns,
+    指定图片元素宽度
+    // with 4 images in each row:
+    每一行有四张图片 
+    inner
+    .gallery img {
+      @include gallery(3 of 12);
+    }
+        output
+
+    .outer {
+      background: green;
+      width: 23.72881%;
+      float: left;
+    }
+
+    .outer:nth-child(4n + 1) {
+      margin-left: 0;
+      margin-right: -100%;
+      clear: both;
+      margin-left: 0;
+    }
+
+    .outer:nth-child(4n + 2) {
+      margin-left: 25.42373%;
+      margin-right: -100%;
+      clear: none;
+    }
+
+    .outer:nth-child(4n + 3) {
+      margin-left: 50.84746%;
+      margin-right: -100%;
+      clear: none;
+    }
+
+    .outer:nth-child(4n + 4) {
+      margin-left: 76.27119%;
+      margin-right: -100%;
+      clear: none;
+    }
+
+    
+    
+###show Grid ...
+
+### susy BreakPoint  断点
+
+	Format:	susy-breakpoint($query, $layout, $no-query)
+    $query:	media query shorthand (see susy-media)
+    $layout:	<layout>
+    $no-query:	<boolean> | <string> (see susy-media)
+    
+    susy-breakpoint() acts as a shortcut for changing layout settings at different media-query breakpoints, using either susy-media or the third-party Breakpoint plugin.
+
+    If you are using the third-party plugin, see Breakpoint: Basic Media Queries and Breakpoint: No Query Fallbacks for details.
+
+    This mixin acts as a wrapper, adding media-queries and changing the layout settings for any susy functions or mixins that are nested inside.
+		inner
+    @include susy-breakpoint(30em, 8) {
+      // nested code uses an 8-column grid,
+      嵌套8列的栅格，最新的断点为30em
+      // starting at a 30em min-width breakpoint...
+      .example { @include span(3); }
+    }
+	
+    output
+    @media (min-width: 30em) {
+      .example {
+        width: 35.89744%;
+        float: left;
+        margin-left: 2.5641%;
+      }
+    }
+
+
 ### Susy Media
 
 

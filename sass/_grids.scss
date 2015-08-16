@@ -17,28 +17,50 @@ $susy: (
   ),
 );
 
+$susy-media: (
+  min: 20em,
+  max: 80em 60em,
+  string: 'screen and (orientation: landscape)',
+  pair: min-height 40em,
+  map: (
+    media: screen,
+    max-width: 30em
+  ),
+);
+
+@include susy-media(string){
+	.cc{
+		width: 100px;
+	}
+};
 
 .container{
 	@include container;
+	@include show-grid(overlay);
 	background:red;
 		nav{
 			@include span(6 of 12);
 			background:#00F;
 			&:nth-child(1){
 				@include first;
+				@include squish(1 at 2 3 at 6);
 			}
 		}
 
 }
 
 
+@include susy-breakpoint(30em, 8) {
+  // nested code uses an 8-column grid,
+  // starting at a 30em min-width breakpoint...
+  .example { @include span(3); }
+}
 
 
 $grid: (1 2 3 2 1);
 
 	.outer {
-	  @include span(3 of $grid at 2);
-		background:#000;
-	  $context: nested(3 of $grid at 2);
-	  .inner { @include span(2 of $context at 1); background:red;}
+			background:green;
+			@include gallery(3 of 12);
 	}
+
