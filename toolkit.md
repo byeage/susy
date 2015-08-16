@@ -429,6 +429,63 @@ susy 需要设置盒模型，所以最好的方式是以简写方式设置全局
 
 ### Susy Media
 
+    Format:	susy-media($query, $no-query)
+    $query:	<min-width> [<max-width>] | <string> | <pair> | <map>
+    $no-query:	<boolean> | <string>
+
+    The susy-media mixin 提供了基础的媒体查询
+
+
+    // min
+    // ---
+    @include susy-media(30em) { /*...*/ }
+
+    @media (min-width: 30em) { /*...*/ }
+
+    // min/max pair
+    // ------------
+    @include susy-media(30em 60em) { /*...*/ }
+
+    @media (min-width: 30em) and (max-width: 60em) { /*...*/ }
+
+    // property/value pair
+    // -------------------
+    @include susy-media(min-height 30em) { /*...*/ }
+
+    @media (min-height: 30em) { /*...*/ }
+
+    // map
+    // ---
+    @include susy-media((
+      min-height: 30em,
+      orientation: landscape,
+    )) { /*...*/ }
+
+    @media (min-height: 30em) and (orientation: landscape) { /*...*/ }
+
+    $no-query
+
+        true will render the contents to css without any media-query. This can be useful for creating separate no-query fallback files.
+
+        For inline fallbacks using a target class, pass in a string (e.g. .no-mqs) to use as your fallback selector. The contents will be output both inside a media-query and again inside the given selector.
+
+        This can be set globally with the $susy-media-fallback variable.
+
+    susy-media also supports named media-queries, which can be set using the $susy-media variable:
+
+    $susy-media: (
+      min: 20em,
+      max: 80em 60em,
+      string: 'screen and (orientation: landscape)',
+      pair: min-height 40em,
+      map: (
+        media: screen,
+        max-width: 30em
+      ),
+    );
+
+    @include susy-media(min);
+
 
 
 
