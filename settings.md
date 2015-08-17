@@ -151,7 +151,7 @@ static 固定布局
 	所有栅格的值根据column-width计算，如果column的值设置为4em,输出值的单位也为em
     All internal grid values will be calculated as multiples of the column-width setting. If you set column-width to 4em, your grid widths will be output as em values. 
 
-###output 布局输出 浮动布局和isolation布局（绝对定位布局）
+###output 布局输出 浮动布局和isolation布局（孤立布局）
 
 	 Key:	output
     Scope:	global, local
