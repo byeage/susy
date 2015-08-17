@@ -1,15 +1,9 @@
-@media screen and (orientation: landscape) {
-  /* line 32, ../sass/_grids.scss */
-  .cc {
-    width: 100px;
-  }
-}
-/* line 37, ../sass/_grids.scss */
+/* line 22, ../sass/_grids.scss */
 .container {
-  max-width: 80%;
+  max-width: 1260px;
   margin-left: auto;
   margin-right: auto;
-  background: red;
+  background: #888;
 }
 /* line 12, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/output/support/_clearfix.scss */
 .container:after {
@@ -60,75 +54,121 @@ head:hover ~ .container:before, head:hover ~ body .container:before {
   background-clip: content-box;
   background-position: left top;
 }
-/* line 71, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_background.scss */
-head:hover ~ .container, head:hover ~ body .container {
-  position: relative;
+
+/* line 28, ../sass/_grids.scss */
+.header {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  background: #f99;
 }
-/* line 74, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_background.scss */
-head:hover ~ .container:before, head:hover ~ body .container:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  content: " ";
-  z-index: 998;
-  background-image: linear-gradient(to right, red, #ff4d4d 80%, transparent 80%);
-  background-size: 8.47458%;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-}
-/* line 41, ../sass/_grids.scss */
-.container nav {
-  width: 49.15254%;
+/* line 31, ../sass/_grids.scss */
+.header .nav {
+  width: 15.25424%;
   float: left;
   margin-left: 1.69492%;
-  background: #00F;
+  background: #88f;
 }
-/* line 44, ../sass/_grids.scss */
-.container nav:nth-child(1) {
-  margin-left: 0;
-  margin-left: 8.47458%;
-  margin-right: 25.42373%;
-}
-
-@media (min-width: 30em) {
-  /* line 56, ../sass/_grids.scss */
-  .example {
-    width: 35.89744%;
-    float: left;
-    margin-left: 2.5641%;
-  }
-}
-/* line 62, ../sass/_grids.scss */
-.outer {
-  background: green;
+/* line 35, ../sass/_grids.scss */
+.header .logo {
   width: 23.72881%;
   float: left;
-}
-/* line 66, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_gallery.scss */
-.outer:nth-child(4n + 1) {
   margin-left: 0;
-  margin-right: -100%;
-  clear: both;
+  background: #445;
+}
+/* line 39, ../sass/_grids.scss */
+.header .info {
+  width: 23.72881%;
+  float: left;
+  margin-left: 1.69492%;
+  background: #886;
+}
+
+/* line 47, ../sass/_grids.scss */
+.content {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* line 49, ../sass/_grids.scss */
+.content .slogan {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  background: #882;
+}
+/* line 53, ../sass/_grids.scss */
+.content .find {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  background: #993;
+}
+
+/* line 59, ../sass/_grids.scss */
+.contentbox {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* line 61, ../sass/_grids.scss */
+.contentbox .tab {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* line 64, ../sass/_grids.scss */
+.contentbox .boxwrap {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1.25%;
+  padding-right: 1.25%;
+  background: red;
+}
+/* line 68, ../sass/_grids.scss */
+.contentbox .boxwrap .box {
+  background: #000;
+  width: 32.5%;
+  float: left;
+  margin-left: 1.25%;
+  margin-top: 1.25%;
+}
+/* line 72, ../sass/_grids.scss */
+.contentbox .boxwrap .box:nth-child(3n+1) {
+  float: left;
   margin-left: 0;
 }
-/* line 66, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_gallery.scss */
-.outer:nth-child(4n + 2) {
-  margin-left: 25.42373%;
-  margin-right: -100%;
-  clear: none;
+/* line 75, ../sass/_grids.scss */
+.contentbox .boxwrap .box:nth-child(4), .contentbox .boxwrap .box:nth-child(5), .contentbox .boxwrap .box:nth-child(6) {
+  margin-bottom: 1.25%;
 }
-/* line 66, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_gallery.scss */
-.outer:nth-child(4n + 3) {
-  margin-left: 50.84746%;
-  margin-right: -100%;
-  clear: none;
+
+/* line 84, ../sass/_grids.scss */
+.footer {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
 }
-/* line 66, C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/susy-2.2.5/sass/susy/language/susy/_gallery.scss */
-.outer:nth-child(4n + 4) {
-  margin-left: 76.27119%;
-  margin-right: -100%;
-  clear: none;
+/* line 86, ../sass/_grids.scss */
+.footer a {
+  background: blue;
+  width: 13.04348%;
+  float: left;
+}
+/* line 89, ../sass/_grids.scss */
+.footer a:last-child {
+  width: 27.53623%;
+  float: right;
 }

@@ -1,0 +1,52 @@
+@import "susy";
+@import "compass/reset";
+
+
+$susy:(
+		columns:12,
+		container:1120px,
+		global-box-sizing:border-box
+	);
+
+@include border-box-sizing;
+
+
+
+.wrap{
+	@include span(full);
+}
+
+.content{
+	/* styles for mobile */
+	background:#ccc;
+	/* styles for desktop */
+	@media (min-width:700px){
+	@include span(8 of 12);
+	}
+}
+
+
+.sidebar{
+	/* styles for mobile */
+	background:#5d5;
+	/* styles for desktop */
+	@media(min-width:700px){
+	@include span(4 of 12 last);
+
+	}
+}
+.gallery{
+	@include span(full);
+	/* styles for mobile */
+	.item{
+		background:#994;
+		@include gallery(2 of 10);
+		margin-bottom:gutter();
+	}
+
+	@media(min-width:700px){
+		.item{
+			@include gallery(1 of 10);
+		}
+	}
+}

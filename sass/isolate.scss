@@ -1,0 +1,24 @@
+@import "susy";
+@import "compass/reset";
+
+$susy:(
+	columns:7,
+	container:900px,
+	container-position:center,
+	global-box-sizing:border-box
+	);
+
+@include border-box-sizing;
+
+.container{
+	@include container;
+	background:#999;
+	padding:gutter();
+}
+
+
+.box{
+	background:#55f;
+	height: 100px;
+	@include gallery(1 of 10);
+}

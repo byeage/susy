@@ -1,0 +1,42 @@
+@import "susy";
+@import "compass/reset";
+$susy:(
+	columns:1 2 3 2 1,
+	output:isolate,
+	global-box-sizing:border-box
+	);
+
+@include border-box-sizing;
+
+
+.wrap{
+	@include full;
+}
+
+.left{
+	@include span(1 first);
+	background:#F44;
+	padding:gutter();
+}
+
+.right{
+	@include span(1 last );
+	background:#F44;
+	padding:gutter();
+}
+
+.content{
+	@include span(3 at 2);
+	background:#5ff;
+	.one{
+		@include span(2 of 7 first);
+		background:#55f;
+		padding:gutter();
+	}
+	.two{
+		@include span(5 of 7 last);
+		background:#FF7;
+		padding:gutter();
+	}
+		
+}

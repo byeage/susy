@@ -4,11 +4,12 @@
 @import "susy";
 
 $susy: (
-  container:80%,
+  container:1260px,
   container-position:center,
   columns: 12,
   gutters: 1/4,
   gutter-position:before,
+  global-box-sizing:border-box,
   debug: (
 		image: show,
 		color: red,
@@ -17,50 +18,77 @@ $susy: (
   ),
 );
 
-$susy-media: (
-  min: 20em,
-  max: 80em 60em,
-  string: 'screen and (orientation: landscape)',
-  pair: min-height 40em,
-  map: (
-    media: screen,
-    max-width: 30em
-  ),
-);
-
-@include susy-media(string){
-	.cc{
-		width: 100px;
-	}
-};
 
 .container{
 	@include container;
-	@include show-grid(overlay);
-	background:red;
-		nav{
-			@include span(6 of 12);
-			background:#00F;
-			&:nth-child(1){
-				@include first;
-				@include squish(1 at 2 3 at 6);
-			}
+	background:#888;
+}
+
+
+.header{
+	@include span(full);
+	background:#f99;
+		.nav{
+			@include span(2 of 12 at 3);
+			background:#88f;
 		}
-
+		.logo{
+			@include span(3 of 12 first);
+			background:#445;
+		}
+		.info{
+			@include span(3 of 12);
+			background:#886;
+		}
 }
 
 
-@include susy-breakpoint(30em, 8) {
-  // nested code uses an 8-column grid,
-  // starting at a 30em min-width breakpoint...
-  .example { @include span(3); }
+
+.content{
+	@include span(full);
+		.slogan{
+			@include span(full );
+			background:#882;
+		}
+		.find{
+			@include span(full);
+			background:#993;
+		}
+}
+
+.contentbox{
+	@include span(full);
+		.tab{
+			@include span(full);
+		}
+		.boxwrap{
+			@include span(full nest border-box);
+			@include pad(gutter(9 1/8));
+			background:red;
+			.box{
+				background:#000;
+				@include span(3 of 9 1/8);
+				margin-top:gutter(9 1/8);
+				&:nth-child(3n+1){
+					@include span(first);
+				}
+				&:nth-child(4),&:nth-child(5),&:nth-child(6){
+					margin-bottom:gutter(9 1/8);
+				}
+			}
+
+		}
 }
 
 
-$grid: (1 2 3 2 1);
+.footer{
+	@include span(full);
+	 a{
+	 	background:blue;
+	 	@include span(2 of 14 no-gutter);
+	 	 &:last-child{
+	 		@include span(4 of 14 no-gutter last);
+	 	}
+	 }
 
-	.outer {
-			background:green;
-			@include gallery(3 of 12);
-	}
-
+}

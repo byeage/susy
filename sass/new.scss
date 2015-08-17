@@ -1,0 +1,37 @@
+@import "susy";
+@import "compass/reset";
+$susy:(
+		columns:12,
+		container:1120px,
+		global-border-box:border-box
+	);
+
+@include border-box-sizing;
+
+.wrap{
+	@include container;
+}
+
+.content{
+	@include span(8);
+	background:Red;
+}
+
+.sidebar{
+	@include span(4 last);
+	background:green;
+}
+
+
+.social{
+	padding:gutter();
+	background:#000;
+	@include break;
+		.social-list-item{
+			@include span(1 of 10);
+			background:#884;
+			&:last-child{
+				@include last;
+			}
+		}
+}
